@@ -16,7 +16,7 @@ jobs:
                 ref: ${{ github.head_ref }}
           - id: diff-check
             if: github.event.action == 'synchronize'
-            run: echo "diff-count=${git diff ${{ github.event.before }}} ${{ github.event.after }} --name-only --relative=hoge | wc -1" >> $GITHUB_OUTPUT
+            run: echo "diff-count=$(git diff ${{ github.event.before }} ${{ github.event.after }} --name-only --relative=hoge | wc -l)" >> $GITHUB_OUTPUT
           - id: no-diff-check
             if: github.event.action != 'synchronize'
             run: echo "diff-count=1" >> $GITHUB_OUTPUT

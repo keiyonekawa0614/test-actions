@@ -23,9 +23,9 @@ jobs:
           - id: comment
             run: |
               lf='\n'
-              message="@${{ github.event.pull_request.user.login }}"
-              message+="${lf}hogeディレクトリ配下のファイルが編集されています。"
-              message+="${lf}fooファイルの修正も行ってください。"
+              message="@${{ github.event.pull_request.user.login }}${lf}"
+              message+="hogeディレクトリ配下のファイルが編集されています。${lf}"
+              message+="fooファイルの修正も行ってください。${lf}"
               message+="[Trigger](https://docs.github.com/ja/actions/using-workflows/events-that-trigger-workflows)"
               echo "message=${message}" >> $GITHUB_OUTPUT
           - uses: actions/github-script@v6
